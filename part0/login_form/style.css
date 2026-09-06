@@ -1,0 +1,249 @@
+/* ==========================================================
+   1. Variables y reseteo básico
+   ========================================================== */
+:root {
+  --color-bg: #eef1f6;
+  --color-surface: #ffffff;
+  --color-text: #1c2230;
+  --color-text-muted: #5b6472;
+  --color-border: #d7dce4;
+  --color-primary: #4f5ed3;
+  --color-primary-dark: #3c49ad;
+  --color-error: #c0392b;
+  --color-success: #2f8f5b;
+
+  --radius: 10px;
+  --font-main: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* ==========================================================
+   2. Estructura de la página
+   ========================================================== */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: 0 12px 24px rgba(28, 34, 48, 0.06);
+}
+
+/* ==========================================================
+   3. Encabezado de la tarjeta
+   ========================================================== */
+.login-card__header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-card__mark {
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.login-card__title {
+  font-size: 1.4rem;
+  margin: 0 0 6px 0;
+}
+
+.login-card__subtitle {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================
+   4. Formulario y campos
+   ========================================================== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field input[type="email"],
+.field input[type="password"],
+.field input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  width: 100%;
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+
+/* Estado inválido: solo se marca después de que el usuario interactuó,
+   gracias a la clase .touched que añadimos con JavaScript. */
+.field.touched input:invalid {
+  border-color: var(--color-error);
+}
+
+.field__error {
+  min-height: 1em;
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-error);
+}
+
+/* Campo de contraseña con botón de mostrar/ocultar */
+.field__password-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.field__password-wrapper input {
+  flex: 1;
+  padding-right: 72px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.toggle-password:hover {
+  text-decoration: underline;
+}
+
+/* Fila con checkbox + enlace */
+.field--inline {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.link,
+.link-muted {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.link-muted {
+  color: var(--color-text-muted);
+}
+
+.link:hover,
+.link-muted:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================
+   5. Botón de envío y mensajes de estado
+   ========================================================== */
+.submit-btn {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+.form-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 4px 0 0 0;
+}
+
+.status-message {
+  text-align: center;
+  font-size: 0.85rem;
+  min-height: 1.2em;
+  margin: 14px 0 0 0;
+}
+
+.status-message.success {
+  color: var(--color-success);
+}
+
+.status-message.error {
+  color: var(--color-error);
+}
+
+/* ==========================================================
+   6. Accesibilidad: respetar reducción de movimiento
+   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .submit-btn {
+    transition: none;
+  }
+}
+
+/* ==========================================================
+   7. Ajustes para pantallas pequeñas
+   ========================================================== */
+@media (max-width: 420px) {
+  .login-card {
+    padding: 24px 20px;
+  }
+}

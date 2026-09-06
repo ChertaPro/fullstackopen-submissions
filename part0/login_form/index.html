@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fullstackopen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="login-page">
+    <div class="login-card">
+
+      <div class="login-card__header">
+        <span class="login-card__mark" aria-hidden="true">◆</span>
+        <h1 class="login-card__title">Bienvenido</h1>
+        <p class="login-card__subtitle">Ingresa tus datos para continuar</p>
+      </div>
+
+      <form id="login-form" class="login-form" novalidate>
+
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="tu@correo.com"
+            autocomplete="email"
+            required
+          />
+          <p class="field__error" id="email-error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <div class="field__password-wrapper">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Mínimo 8 caracteres"
+              autocomplete="current-password"
+              minlength="8"
+              required
+            />
+            <button type="button" class="toggle-password" id="toggle-password" aria-label="Mostrar contraseña">
+              Mostrar
+            </button>
+          </div>
+          <p class="field__error" id="password-error" aria-live="polite"></p>
+        </div>
+
+        <div class="field field--inline">
+          <label class="checkbox">
+            <input type="checkbox" id="remember" name="remember" />
+            <span>Recordarme</span>
+          </label>
+          <a href="#" class="link-muted">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="submit-btn">Iniciar sesión</button>
+
+        <p class="form-footer">
+          ¿No tienes cuenta? <a href="#" class="link">Regístrate</a>
+        </p>
+
+      </form>
+
+      <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
